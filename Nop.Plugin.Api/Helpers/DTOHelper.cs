@@ -10,10 +10,12 @@ using Nop.Services.Catalog;
 using Nop.Services.Seo;
 using Nop.Services.Security;
 using Nop.Services.Stores;
+using Nop.Services.Discounts;
 using Nop.Plugin.Api.DTOs.Images;
 using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Stores;
+using Nop.Core.Domain.Discounts;
 using Nop.Plugin.Api.MappingExtensions;
 using Nop.Plugin.Api.DTOs.Categories;
 using Nop.Plugin.Api.DTOs.Customers;
@@ -23,6 +25,7 @@ using Nop.Plugin.Api.Services;
 using Nop.Services.Media;
 using Nop.Plugin.Api.DTOs.ShoppingCarts;
 using Nop.Plugin.Api.DTOs.Stores;
+using Nop.Plugin.Api.DTOs.Discounts;
 using Nop.Services.Directory;
 using Nop.Services.Localization;
 
@@ -171,11 +174,28 @@ namespace Nop.Plugin.Api.Helpers
             if (!String.IsNullOrEmpty(primaryCurrency.DisplayLocale))
             {
                 storeDto.PrimaryCurrencyDisplayLocale = primaryCurrency.DisplayLocale;
+                storeDto.PrimaryCurrencyCode = primaryCurrency.CurrencyCode;
             }
 
             storeDto.LanguageIds = _languageService.GetAllLanguages(false, store.Id).Select(x => x.Id).ToList();
 
             return storeDto;
+        }
+
+        public DiscountDto PrepareDiscountDTO(Discount discount)
+        {
+            DiscountDto discountDto = discount.ToDto();
+            discountDto.ProductIds = discount.AppliedToProducts.Select(mapping => mapping.Id).ToList();
+            discountDto.CategoryIds = discount.AppliedToCategories.Select(mapping => mapping.Id).ToList();
+
+            int value = (int) discount.DiscountType;
+            DiscountType discountType = (DiscountType)value;
+            string stringValue = discountType.ToString();
+
+            discountDto.RequirementTypes = discount.DiscountRequirements.Select(mapping => mapping.DiscountRequirementRuleSystemName).ToList();
+
+            discountDto.DiscountType = stringValue;
+            return discountDto;
         }
 
         public LanguageDto PrepateLanguageDto(Language language)

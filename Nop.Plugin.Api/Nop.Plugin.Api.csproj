@@ -242,11 +242,14 @@
     <Compile Include="Constants\WebHookNames.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CustomerRolesController.cs" />
+    <Compile Include="Controllers\DiscountController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
     <Compile Include="Controllers\NewsLetterSubscriptionController.cs" />
     <Compile Include="Controllers\OrderItemsController.cs" />
     <Compile Include="DTOs\CustomerRoles\CustomerRoleDto.cs" />
     <Compile Include="DTOs\CustomerRoles\CustomerRolesRootObject.cs" />
+    <Compile Include="DTOs\Discounts\DiscountDto.cs" />
+    <Compile Include="DTOs\Discounts\DiscountsRootObject.cs" />
     <Compile Include="DTOs\Images\ImageMappingDto.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\WebHookFiltersController.cs" />
@@ -283,6 +286,7 @@
     <Compile Include="JSON\ActionResults\ErrorActionResult.cs" />
     <Compile Include="JSON\ActionResults\RawJsonActionResult.cs" />
     <Compile Include="MappingExtensions\CustomerRoleDtoMappings.cs" />
+    <Compile Include="MappingExtensions\DiscountDtoMappings.cs" />
     <Compile Include="MappingExtensions\LanguageDtoMappings.cs" />
     <Compile Include="MappingExtensions\NewsLetterSubscriptoonDtoMappings.cs" />
     <Compile Include="MappingExtensions\StoreDtoMappings.cs" />
