@@ -2,6 +2,7 @@
 using Nop.Core.Domain.Localization;
 using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Stores;
+using Nop.Core.Domain.Discounts;
 using Nop.Plugin.Api.DTOs.Categories;
 using Nop.Plugin.Api.DTOs.Languages;
 using Nop.Plugin.Api.DTOs.OrderItems;
@@ -10,6 +11,7 @@ using Nop.Plugin.Api.DTOs.ProductAttributes;
 using Nop.Plugin.Api.DTOs.Products;
 using Nop.Plugin.Api.DTOs.ShoppingCarts;
 using Nop.Plugin.Api.DTOs.Stores;
+using Nop.Plugin.Api.DTOs.Discounts;
 
 namespace Nop.Plugin.Api.Helpers
 {
@@ -23,5 +25,6 @@ namespace Nop.Plugin.Api.Helpers
         StoreDto PrepareStoreDTO(Store store);
         LanguageDto PrepateLanguageDto(Language language);
         ProductAttributeDto PrepareProductAttributeDTO(ProductAttribute productAttribute);
+	DiscountDto PrepareDiscountDTO(Discount discount);
     }
 }

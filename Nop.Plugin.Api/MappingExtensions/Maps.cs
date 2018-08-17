@@ -10,6 +10,7 @@ using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Directory;
 using Nop.Core.Domain.Localization;
 using Nop.Core.Domain.Stores;
+using Nop.Core.Domain.Discounts;
 using Nop.Plugin.Api.AutoMapper;
 using Nop.Plugin.Api.Domain;
 using Nop.Plugin.Api.DTOs;
@@ -22,6 +23,7 @@ using Nop.Plugin.Api.DTOs.ProductCategoryMappings;
 using Nop.Plugin.Api.DTOs.Products;
 using Nop.Plugin.Api.DTOs.ShoppingCarts;
 using Nop.Plugin.Api.DTOs.Stores;
+using Nop.Plugin.Api.DTOs.Discounts;
 using Nop.Plugin.Api.Models;
 using Nop.Plugin.Api.DTOs.ProductAttributes;
 using Nop.Core.Domain.Messages;
@@ -134,6 +136,8 @@ namespace Nop.Plugin.Api.MappingExtensions
             CreateMap<CategoryDto, Category>();
 
             CreateMap<Store, StoreDto>();
+            
+            CreateMap<Discount, DiscountDto>();
 
             CreateMap<ProductCategory, ProductCategoryMappingDto>();
 

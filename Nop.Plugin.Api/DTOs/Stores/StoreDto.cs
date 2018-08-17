@@ -101,5 +101,11 @@ namespace Nop.Plugin.Api.DTOs.Stores
         /// </summary>
         [JsonProperty("primary_currency_display_locale")]
         public string PrimaryCurrencyDisplayLocale { get; set; }
+
+        /// <summary>
+        /// Get the currency code
+        /// </summary>
+        [JsonProperty("primary_currency_code")]
+        public string PrimaryCurrencyCode { get; set;}
     }
 }

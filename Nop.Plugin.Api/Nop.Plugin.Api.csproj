@@ -184,10 +184,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>False</Private>
@@ -246,12 +242,15 @@
     <Compile Include="Constants\WebHookNames.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CustomerRolesController.cs" />
+    <Compile Include="Controllers\DiscountController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
     <Compile Include="Controllers\NewsLetterSubscriptionController.cs" />
     <Compile Include="Controllers\OrderItemsController.cs" />
     <Compile Include="Controllers\ProductAttributesController.cs" />
     <Compile Include="DTOs\CustomerRoles\CustomerRoleDto.cs" />
     <Compile Include="DTOs\CustomerRoles\CustomerRolesRootObject.cs" />
+    <Compile Include="DTOs\Discounts\DiscountDto.cs" />
+    <Compile Include="DTOs\Discounts\DiscountsRootObject.cs" />
     <Compile Include="DTOs\Images\ImageMappingDto.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\WebHookFiltersController.cs" />
@@ -291,6 +290,7 @@
     <Compile Include="JSON\ActionResults\ErrorActionResult.cs" />
     <Compile Include="JSON\ActionResults\RawJsonActionResult.cs" />
     <Compile Include="MappingExtensions\CustomerRoleDtoMappings.cs" />
+    <Compile Include="MappingExtensions\DiscountDtoMappings.cs" />
     <Compile Include="MappingExtensions\LanguageDtoMappings.cs" />
     <Compile Include="MappingExtensions\NewsLetterSubscriptoonDtoMappings.cs" />
     <Compile Include="MappingExtensions\ProductAttributeDtoMappings.cs" />
