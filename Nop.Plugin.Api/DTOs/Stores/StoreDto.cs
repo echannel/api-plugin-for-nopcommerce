@@ -107,5 +107,17 @@ namespace Nop.Plugin.Api.DTOs.Stores
         /// </summary>
         [JsonProperty("primary_currency_code")]
         public string PrimaryCurrencyCode { get; set;}
+
+        /// <summary>
+        /// Get the weight unit
+        /// </summary>
+        [JsonProperty("weight_unit")]
+        public string WeightUnit { get; set; }
+
+        /// <summary>
+        /// Get the dimension unit
+        /// </summary>
+        [JsonProperty("dimension_unit")]
+        public string DimensionUnit { get; set; }
     }
 }

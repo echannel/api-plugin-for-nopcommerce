@@ -12,7 +12,7 @@ namespace Nop.Plugin.Api.DTOs.Discounts
 
         private List<int> _productIds;
         private List<int> _categoryIds;
-        private List<string> _requirementTypes;
+        private List<KeyValuePair<string, decimal>> _requirementTypes;
 
         /// <summary>
         /// Gets or sets the store ID
@@ -124,12 +124,9 @@ namespace Nop.Plugin.Api.DTOs.Discounts
         /// Gets or sets the requirement types in which the discount is applied
         /// </summary>
         [JsonProperty("requirement_types")]
-        public List<string> RequirementTypes
+        public List<KeyValuePair<string, decimal>> RequirementTypes
         {
-            get
-            {
-                return _requirementTypes;
-            }
+            get => _requirementTypes;
             set
             {
                 _requirementTypes = value;

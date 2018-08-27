@@ -28,6 +28,8 @@ using Nop.Plugin.Api.DTOs.Stores;
 using Nop.Plugin.Api.DTOs.Discounts;
 using Nop.Services.Directory;
 using Nop.Services.Localization;
+using Nop.Services.Configuration;
+using Nop.Core.Data;
 
 namespace Nop.Plugin.Api.Helpers
 {
@@ -44,6 +46,11 @@ namespace Nop.Plugin.Api.Helpers
         private readonly IStoreService _storeService;
         private ICustomerApiService _customerApiService;
         private IProductAttributeConverter _productAttributeConverter;
+        private readonly ISettingService _settingService;
+        private MeasureSettings _measureSettings;
+
+        private IRepository<MeasureWeight> _measureWeightRepository;
+        private IRepository<MeasureDimension> _measureDimensionRepository;
 
         public DTOHelper(IProductService productService,
             IAclService aclService,
@@ -55,7 +62,11 @@ namespace Nop.Plugin.Api.Helpers
             ILanguageService languageService,
             ICurrencyService currencyService,
             CurrencySettings currencySettings,
-            IStoreService storeService)
+            IStoreService storeService,
+            ISettingService settingService,
+            MeasureSettings measureSettings,
+            IRepository<MeasureWeight> measureWeightRepository,
+            IRepository<MeasureDimension> measureDimensionRepository)
         {
             _productService = productService;
             _aclService = aclService;
@@ -68,6 +79,10 @@ namespace Nop.Plugin.Api.Helpers
             _currencyService = currencyService;
             _currencySettings = currencySettings;
             _storeService = storeService;
+            _settingService = settingService;
+            _measureSettings = measureSettings;
+            this._measureWeightRepository = measureWeightRepository;
+            this._measureDimensionRepository = measureDimensionRepository;
         }
 
         public ProductDto PrepareProductDTO(Product product)
@@ -170,6 +185,12 @@ namespace Nop.Plugin.Api.Helpers
             StoreDto storeDto = store.ToDto();
 
             Currency primaryCurrency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId);
+            
+            MeasureWeight weightUnit = _measureWeightRepository.GetById(_measureSettings.BaseWeightId);
+            storeDto.WeightUnit = weightUnit.Name;
+
+            MeasureDimension dimensionUnit = _measureDimensionRepository.GetById(_measureSettings.BaseDimensionId);
+            storeDto.DimensionUnit = dimensionUnit.Name;
 
             if (!String.IsNullOrEmpty(primaryCurrency.DisplayLocale))
             {
@@ -192,7 +213,17 @@ namespace Nop.Plugin.Api.Helpers
             DiscountType discountType = (DiscountType)value;
             string stringValue = discountType.ToString();
 
-            discountDto.RequirementTypes = discount.DiscountRequirements.Select(mapping => mapping.DiscountRequirementRuleSystemName).ToList();
+            var RequirementTypes = discount.DiscountRequirements;
+
+            var list = new List<KeyValuePair<string, decimal>>();
+
+            foreach (var requirementType in RequirementTypes)
+            {
+                var spentAmountRequirement = _settingService.GetSettingByKey<decimal>(string.Format("DiscountRequirement.HadSpentAmount-{0}", requirementType.Id));
+                list.Add(new KeyValuePair<string, decimal>(requirementType.DiscountRequirementRuleSystemName, spentAmountRequirement));
+            }
+
+            discountDto.RequirementTypes = list;
 
             discountDto.DiscountType = stringValue;
             return discountDto;
