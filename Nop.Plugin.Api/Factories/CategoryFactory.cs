@@ -30,7 +30,7 @@ namespace Nop.Plugin.Api.Factories
             }
             
             //default values
-            defaultCategory.PageSize = _catalogSettings.DefaultCategoryPageSize;
+            defaultCategory.PageSize = 100;
             defaultCategory.PageSizeOptions = _catalogSettings.DefaultCategoryPageSizeOptions;
             defaultCategory.Published = true;
             defaultCategory.IncludeInTopMenu = true;

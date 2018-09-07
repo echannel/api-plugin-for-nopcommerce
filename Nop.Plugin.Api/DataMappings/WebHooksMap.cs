@@ -14,7 +14,7 @@ namespace Nop.Plugin.Api.DataMappings
         {
             ToTable("WebHooks", "WebHooks");
 
-            HasKey(wh => new {wh.User, wh.Id});
+            HasKey(wh => new {wh.User, wh.WhId});
 
             Property(wh => wh.ProtectedData).IsRequired();
             Property(wh => wh.RowVer).IsRowVersion();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -32,7 +32,7 @@ namespace Nop.Plugin.Api.Data
 
         public string CreateDatabaseScript()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateDatabaseScript();
+           return ((IObjectContextAdapter)this).ObjectContext.CreateDatabaseScript();
         }
 
         /// <summary>

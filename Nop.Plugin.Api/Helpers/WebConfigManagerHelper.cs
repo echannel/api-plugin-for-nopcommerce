@@ -135,7 +135,7 @@ namespace Nop.Plugin.Api.Helpers
                 else
                 {
                     // there should be only a single attribute and it should be boolean
-                    bool existingValue = Boolean.Parse(element.LastAttribute.Value);
+                    bool existingValue = Boolean.Parse("true");
 
                     if (existingValue != value)
                     {

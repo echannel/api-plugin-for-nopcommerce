@@ -347,14 +347,7 @@ namespace Nop.Plugin.Api.Controllers
                 }
                 else
                 {
-                    // add new product picture
-                    Picture newPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    _productService.InsertProductPicture(new ProductPicture()
-                    {
-                        PictureId = newPicture.Id,
-                        ProductId = entityToUpdate.Id,
-                        DisplayOrder = imageDto.Position
-                    });
+                   
                 }
             }
         }

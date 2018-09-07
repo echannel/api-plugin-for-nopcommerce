@@ -34,7 +34,7 @@ namespace Nop.Plugin.Api.Infrastructure
     {
 		private const string ObjectContextName = "nop_object_context_web_api";
 
-        public void Register(ContainerBuilder builder, ITypeFinder typeFinder, NopConfig config)
+        public void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
             this.RegisterPluginDataContext<ApiObjectContext>(builder, ObjectContextName);
 

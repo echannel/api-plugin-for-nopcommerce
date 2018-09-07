@@ -11,7 +11,7 @@ namespace Nop.Plugin.Api.Domain
     {
         public string User { get; set; }
 
-        public string Id { get; set; }
+        public string WhId { get; set; }
 
         public string ProtectedData { get; set; }
 

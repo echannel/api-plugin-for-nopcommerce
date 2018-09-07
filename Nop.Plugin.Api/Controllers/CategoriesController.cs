@@ -184,7 +184,7 @@ namespace Nop.Plugin.Api.Controllers
             // We need to insert the picture before the category so we can obtain the picture id and map it to the category.
             if (categoryDelta.Dto.Image != null && categoryDelta.Dto.Image.Binary != null)
             {
-                insertedPicture = _pictureService.InsertPicture(categoryDelta.Dto.Image.Binary, categoryDelta.Dto.Image.MimeType, string.Empty);
+                //insertedPicture = _pictureService.InsertPicture(categoryDelta.Dto.Image.Binary, categoryDelta.Dto.Image.MimeType, string.Empty);
             }
 
             // Inserting the new category
@@ -330,8 +330,8 @@ namespace Nop.Plugin.Api.Controllers
                 }
                 else
                 {
-                    updatedPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    categoryEntityToUpdate.PictureId = updatedPicture.Id;
+                    //updatedPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
+                    //categoryEntityToUpdate.PictureId = updatedPicture.Id;
                 }
             }
             // when there isn't a picture set for the category
@@ -339,8 +339,8 @@ namespace Nop.Plugin.Api.Controllers
             {
                 if (imageDto.Binary != null)
                 {
-                    updatedPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    categoryEntityToUpdate.PictureId = updatedPicture.Id;
+                   // updatedPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
+                   // categoryEntityToUpdate.PictureId = updatedPicture.Id;
                 }
             }
         }

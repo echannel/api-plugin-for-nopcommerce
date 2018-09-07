@@ -12,7 +12,7 @@ using Nop.Services.Localization;
 
 namespace Nop.Plugin.Api.Plugin
 {
-    public class ApiPlugin : BasePlugin, IAdminMenuPlugin, IMiscPlugin
+    public class ApiPlugin : BasePlugin, IMiscPlugin
     {
         private const string ControllersNamespace = "Nop.Plugin.Api.Controllers";
 
@@ -163,10 +163,12 @@ namespace Nop.Plugin.Api.Plugin
             _webConfigMangerHelper.RemoveConfiguration();
         }
 
-        public void ManageSiteMap(SiteMapNode rootNode)
+        public bool Authenticate()
         {
-
+            return false;
         }
+
+        
 
         /// <summary>
         /// Gets a route for provider configuration

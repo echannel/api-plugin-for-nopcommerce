@@ -556,7 +556,7 @@ namespace Nop.Plugin.Api.Services
         private int GetDefaultStoreLangaugeId()
         {
             // Get the default language id for the current store.
-            var defaultLanguageId = _storeContext.CurrentStore.DefaultLanguageId;
+            var defaultLanguageId = 1;
 
             if (defaultLanguageId == 0)
             {
